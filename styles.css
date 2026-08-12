@@ -370,6 +370,18 @@ button {
 button:hover, button:focus-visible { background: var(--paper); transform: rotate(-2deg); }
 @media (max-width: 44rem) { .contact-inner { grid-template-columns: 1fr; } }
 
+.clickableButton {
+  align-self: flex-start;
+  font-family: 'Karla', sans-serif; font-weight: 800;
+  font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink); background: var(--slate);
+  border: none; border-radius: 999px;
+  padding: 1.05rem 2.6rem; cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.clickableButton:hover, .clickableButton:focus-visible { background: var(--paper); transform: rotate(-2deg); }
+@media (max-width: 44rem) { .contact-inner { grid-template-columns: 1fr; } }
+
 footer {
   background: var(--ink); color: color-mix(in srgb, var(--paper) 55%, transparent);
   padding: 2rem clamp(1.25rem, 5vw, 3rem) 2.5rem;
@@ -390,3 +402,9 @@ footer .aster { color: var(--slate); }
   .tile, button { transition: none; }
   html { scroll-behavior: auto; }
 }
+
+/* Whitespacing */
+.whitespace {
+  padding: 2rem;
+}
+
