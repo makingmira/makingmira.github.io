@@ -81,7 +81,7 @@ img { max-width: 100%; display: block; }
 }
 .eyebrow::before {
   font-variant-emoji: text;
-  content: '✳'; 
+  content: '\2733\FE0E'; 
   font-size: 0.9rem; }
 
 .wrap { max-width: 72rem; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem); }
