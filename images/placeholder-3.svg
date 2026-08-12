@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Placeholder product photo: drop earrings line drawing. Delete once real photos exist. -->
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E6E8E1"/>
+      <stop offset="1" stop-color="#DCE0DA"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#g)"/>
+  <g fill="none" stroke="#7B8FA3" stroke-width="7" stroke-linecap="round" opacity="0.75">
+    <path d="M150 110 q-14 18 0 34 q14 16 0 34"/>
+    <circle cx="150" cy="215" r="34"/>
+    <path d="M250 110 q14 18 0 34 q-14 16 0 34"/>
+    <circle cx="250" cy="215" r="34"/>
+  </g>
+  <text x="200" y="330" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="17" fill="#55687B">photo coming soon ✳</text>
+</svg>
