@@ -1,0 +1,392 @@
+/* ======================================================
+   MAKING MIRA — styles.css
+   Table of contents:
+     1. Design tokens (colors — EDIT HERE to retheme)
+     2. Base + shared styles
+     3. Nav
+     4. Hero + ticker
+     5. About
+     6. Featured piece
+     7. Portfolio grid
+     8. Contact + footer
+     9. Fade-in animation + reduced motion
+   ====================================================== */
+
+/* ============ 1. DESIGN TOKENS ============ */
+/* EDIT HERE: change these values to retheme the whole site. */
+:root {
+  --paper: #F2F1EC;        /* cool off-white ground */
+  --paper-2: #EAEAE3;      /* slightly deeper panel (featured section) */
+  --ink: #212422;          /* soft black */
+  --ink-soft: #4A4E4B;     /* body text */
+  --slate: #7B8FA3;        /* grey-blue accent */
+  --slate-deep: #55687B;   /* accent for text on light ground */
+  --mist: #DCE0DA;         /* tile grounds, rules */
+  --tile: #E6E8E1;         /* placeholder tile background */
+  --line: #C9CDC5;         /* hairline borders */
+}
+
+/* Dark mode: follows the visitor's system setting automatically. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1E1D;
+    --paper-2: #232624;
+    --ink: #EDECE6;
+    --ink-soft: #B4B6AF;
+    --slate: #8FA4B8;
+    --slate-deep: #A7BACC;
+    --mist: #2C302E;
+    --tile: #272B29;
+    --line: #3A3F3C;
+  }
+}
+
+/* ============ 2. BASE + SHARED ============ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Karla', sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+::selection { background: var(--slate); color: var(--paper); }
+
+img { max-width: 100%; display: block; }
+
+/* Big wonky headings */
+.display {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'opsz' 144, 'SOFT' 40, 'WONK' 1;
+  font-weight: 480;
+  line-height: 0.95;
+  text-wrap: balance;
+  letter-spacing: -0.015em;
+}
+
+/* Small uppercase section labels */
+.eyebrow {
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate-deep);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eyebrow::before { content: '✳'; font-size: 0.9rem; }
+
+.wrap { max-width: 72rem; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem); }
+section { padding: clamp(4.5rem, 11vw, 9rem) 0; }
+
+/* ============ 3. NAV ============ */
+nav {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 1.5rem clamp(1.25rem, 5vw, 3rem);
+  max-width: 72rem; margin: 0 auto;
+}
+.nav-mark { font-family: 'Fraunces', serif; font-style: italic; font-weight: 600; font-size: 1.2rem; }
+.nav-links { display: flex; gap: clamp(1rem, 4vw, 2.5rem); }
+.nav-links a {
+  color: var(--ink); text-decoration: none;
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;
+  border-bottom: 2px solid transparent; padding-bottom: 2px;
+}
+.nav-links a:hover, .nav-links a:focus-visible { border-bottom-color: var(--slate); }
+
+/* ---------- Hamburger toggle button ---------- */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 60;
+}
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+/* X shape when menu is open */
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- Mobile nav layout ---------- */
+@media (max-width: 44rem) {
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    inset: 0 0 0 auto;
+    top: 0;
+    height: 100vh;
+    width: min(75vw, 20rem);
+    background: var(--paper);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 0 clamp(1.5rem, 8vw, 3rem);
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 55;
+    border-left: 1px solid var(--line);
+  }
+  .nav-links.open { transform: translateX(0); }
+
+  .nav-links a { font-size: 1.1rem; }
+
+  /* dim the page behind the open menu */
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: color-mix(in srgb, var(--ink) 40%, transparent);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 50;
+  }
+  .nav-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .nav-links, .nav-toggle span, .nav-overlay { transition: none; }
+}
+/* ============ 4. HERO + TICKER ============ */
+.hero { padding: clamp(3rem, 8vw, 6rem) 0 0; }
+.hero h1 {
+  font-size: clamp(3.2rem, 14vw, 11.5rem);
+  text-transform: uppercase;
+}
+.hero .line { display: flex; align-items: center; gap: clamp(0.75rem, 2vw, 1.75rem); flex-wrap: wrap; }
+.hero .line.shift { padding-left: clamp(1rem, 8vw, 7rem); }
+.hero .mira { font-weight: 560; color: var(--slate-deep); }
+
+/* The pill-shaped image chip inside the headline */
+.hero .chip {
+  display: inline-block;
+  width: clamp(auto /*10rem, 15vw, 20rem*/);
+  height: 1em;
+  border-radius: 999px;
+  overflow: hidden;
+  */ background:
+    radial-gradient(circle at 30% 35%, var(--slate) 0 18%, transparent 19%),
+    radial-gradient(circle at 68% 60%, transparent 0 12%, var(--mist) 13% 20%, transparent 21%),
+    linear-gradient(135deg, var(--tile), var(--mist));
+  /*border: 1px solid var(--line); */
+  
+}
+
+@media (max-width: 767px) {
+  .hero .chip {
+    display: none;
+  }
+}
+.hero .chip img { width: 100%; height: 100%; object-fit: cover; }
+
+.hero .aster { color: var(--slate); font-family: 'Fraunces', serif; font-weight: 300; }
+.hero-sub {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap;
+}
+.hero-sub p { max-width: 26ch; font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.45; color: var(--ink-soft); }
+.hero-sub .scroll-hint { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: var(--slate-deep); }
+
+/* Attempt at main hero image since chip is confuing me */
+
+.hero .herofeature {
+  display:inline-block;
+  margin-left:60%;
+  max-width: 20rem;
+  min-width: 2rem;
+}
+/* Scrolling tagline strip */
+.ticker {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  margin-top: clamp(3rem, 7vw, 5rem);
+  padding: 0.9rem 0;
+  white-space: nowrap;
+}
+.ticker-track { display: inline-block; animation: slide 28s linear infinite; }
+.ticker span {
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 500;
+  font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+  padding: 0 1.4rem;
+}
+.ticker .aster { color: var(--slate); font-style: normal; }
+@keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ============ 5. ABOUT ============ */
+.about .lead {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'opsz' 60, 'SOFT' 40, 'WONK' 1;
+  font-size: clamp(1.6rem, 3.6vw, 2.7rem);
+  line-height: 1.25;
+  max-width: 24ch;
+  margin: 2rem 0 2.5rem;
+  text-wrap: balance;
+}
+.about .lead em { font-style: italic; color: var(--slate-deep); }
+.about-cols { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+.about-cols p { max-width: 58ch; color: var(--ink-soft); }
+.about-cols p + p { margin-top: 1.25rem; }
+.pull {
+  border-left: 3px solid var(--slate);
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.4;
+  color: var(--ink);
+  max-width: 30ch;
+}
+@media (max-width: 44rem) { .about-cols { grid-template-columns: 1fr; } }
+
+/* ============ 6. FEATURED PIECE ============ */
+.featured { background: var(--paper-2); }
+.featured-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 6vw, 5rem); align-items: center; }
+
+/* Arch (ring-silhouette) photo frame */
+.arch {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px 24px 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 50% 42%, transparent 0 21%, var(--slate) 22% 26%, transparent 27%),
+    radial-gradient(circle at 72% 70%, var(--mist) 0 10%, transparent 11%),
+    linear-gradient(160deg, var(--tile), var(--mist));
+  transform: rotate(-1.2deg);
+}
+.arch img { width: 100%; height: 100%; object-fit: cover; }
+
+.featured h2 { font-size: clamp(2.4rem, 5.5vw, 4.5rem); margin: 1.5rem 0; }
+.featured p { color: var(--ink-soft); max-width: 46ch; }
+.caption {
+  margin-top: 1.5rem;
+  font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700;
+  color: var(--slate-deep);
+}
+@media (max-width: 44rem) { .featured-inner { grid-template-columns: 1fr; } .arch { max-width: 22rem; margin: 0 auto; } }
+
+/* ============ 7. PORTFOLIO GRID ============ */
+.work-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+.work-head h2 { font-size: clamp(2.6rem, 7vw, 5.5rem); }
+.work-head .count { font-family: 'Fraunces', serif; font-style: italic; color: var(--slate-deep); font-size: 1.1rem; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+}
+.tile {
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  background: linear-gradient(150deg, var(--tile), var(--mist));
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex; align-items: center; justify-content: center;
+}
+.tile:hover { transform: rotate(-1.6deg) scale(1.02); }
+
+/* Mixed tile shapes — arches, pills, one full circle */
+.tile:nth-child(3n+1) { border-radius: 22px; }
+.tile:nth-child(3n+2) { border-radius: 999px 999px 22px 22px; }
+.tile:nth-child(3n)   { border-radius: 22px 999px 22px 22px; }
+.tile:nth-child(5)    { border-radius: 999px; }
+
+/* Placeholder line drawings (deleted when you add real photos) */
+.tile svg { width: 46%; height: 46%; color: var(--slate); opacity: 0.7; }
+
+/* Real photos fill the whole tile */
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.tile .num {
+  position: absolute; bottom: 0.9rem; left: 1.1rem;
+  font-family: 'Fraunces', serif; font-style: italic; font-size: 0.95rem; color: var(--slate-deep);
+}
+@media (max-width: 44rem) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 28rem) { .grid { grid-template-columns: 1fr; } .tile { aspect-ratio: 5/4; } }
+
+/* ============ 8. CONTACT + FOOTER ============ */
+.contact { background: var(--ink); color: var(--paper); }
+.contact .eyebrow { color: var(--slate); }
+.contact h2 { font-size: clamp(2.8rem, 8vw, 6.5rem); margin: 1.5rem 0 1rem; max-width: 14ch; }
+.contact h2 em { font-style: italic; color: var(--slate); }
+.contact-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2.5rem, 7vw, 6rem); }
+.contact-info p { color: color-mix(in srgb, var(--paper) 72%, transparent); max-width: 40ch; margin-bottom: 2rem; }
+.contact-links { display: flex; flex-direction: column; gap: 0.6rem; }
+.contact-links a {
+  color: var(--paper); text-decoration: none;
+  font-family: 'Fraunces', serif; font-style: italic; font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  width: fit-content; border-bottom: 1px solid var(--slate);
+}
+.contact-links a:hover, .contact-links a:focus-visible { color: var(--slate); }
+
+form { display: flex; flex-direction: column; gap: 1.6rem; }
+.field label {
+  display: block; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--slate); margin-bottom: 0.4rem;
+}
+.field input, .field textarea {
+  width: 100%; background: transparent; border: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--paper) 35%, transparent);
+  color: var(--paper); font-family: 'Karla', sans-serif; font-size: 1.05rem;
+  padding: 0.5rem 0; resize: vertical;
+}
+.field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--slate); }
+
+button {
+  align-self: flex-start;
+  font-family: 'Karla', sans-serif; font-weight: 800;
+  font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink); background: var(--slate);
+  border: none; border-radius: 999px;
+  padding: 1.05rem 2.6rem; cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+button:hover, button:focus-visible { background: var(--paper); transform: rotate(-2deg); }
+@media (max-width: 44rem) { .contact-inner { grid-template-columns: 1fr; } }
+
+footer {
+  background: var(--ink); color: color-mix(in srgb, var(--paper) 55%, transparent);
+  padding: 2rem clamp(1.25rem, 5vw, 3rem) 2.5rem;
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  font-size: 0.85rem;
+  border-top: 1px solid color-mix(in srgb, var(--paper) 14%, transparent);
+}
+footer .aster { color: var(--slate); }
+
+/* ============ 9. FADE-IN + REDUCED MOTION ============ */
+.fade { opacity: 0; transform: translateY(26px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.fade.visible { opacity: 1; transform: none; }
+
+/* Visitors with "reduce motion" turned on get a still page */
+@media (prefers-reduced-motion: reduce) {
+  .fade { opacity: 1; transform: none; transition: none; }
+  .ticker-track { animation: none; }
+  .tile, button { transition: none; }
+  html { scroll-behavior: auto; }
+}

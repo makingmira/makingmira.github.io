@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ======================================================
+       MAKING MIRA — single-page site
+       Files: index.html (content) / styles.css (look) / script.js (motion + form)
+       Search for "EDIT HERE" to find every spot meant for your
+       own photos, alt text, and copy.
+       ====================================================== -->
+
+  <title>Making Mira — Wonky. Unique. Functional. Experimental.</title>
+  <meta name="description" content="Slow, wearable art inspired by nature and imagination. One-of-a-kind handmade jewelry by Mira — available for purchase and commission.">
+
+  <!-- Social sharing preview (EDIT HERE: swap og:image for a real photo URL once you have one) -->
+  <meta property="og:title" content="Making Mira Jewelry">
+  <meta property="og:description" content="Wonky. Unique. Functional. Experimental. Slow, wearable art meant to last forever.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon: a little asterisk. Replace with your own .ico/.png if you like. -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='images\logoBlueBorderless.svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='72' font-size='75' text-anchor='middle' fill='%237B8FA3'%3E%E2%9C%B3%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: Fraunces (wonky display serif) + Karla (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Karla:ital,wght@0,200..800;1,200..800&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <!--<nav>
+    <span class="nav-mark">Making Mira ✳</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Commission</a>
+    </div>
+  </nav> -->
+
+  <nav>
+  <span class="nav-mark">Making Mira ✳</span>
+
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="nav-links" id="nav-links">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Commission</a>
+  </div>
+</nav>
+
+<div class="nav-overlay" id="nav-overlay"></div>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="wrap">
+      <h1 class="display fade visible">
+        <span class="line">Making<!--
+          The "chip" is the little pill-shaped image inside the headline.
+          EDIT HERE: to use a real photo, delete the empty <span> below and
+          uncomment the <span> that contains the <img>, then set src + alt.
+          A wide, close-up crop works best.
+          -->
+        <!--<span class="chip"><img src="images\logoBlueBorderless.svg" alt="EDIT HERE: describe the photo, e.g. 'Close-up of a hammered silver cuff'"></span>
+        </span> 
+        <span class="herofeature"><img src="images\stoneRing.png" alt=""></span>-->
+        <span class="line shift"><span class="mira">Mira</span><span class="aster"></span></span>
+      </h1>
+      <div class="hero-sub fade visible">
+        <p>Slow, wearable art inspired by nature &amp; imagination — meant to last forever.</p>
+        <span class="scroll-hint">Scroll ↓</span>
+      </div>
+    </div>
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Wonky</span><span class="aster">✳</span><span>Unique</span><span class="aster">✳</span><span>Functional</span><span class="aster">✳</span><span>Experimental</span><span class="aster">✳</span><span>Wonky</span><span class="aster">✳</span><span>Unique</span><span class="aster">✳</span><span>Functional</span><span class="aster">✳</span><span>Experimental</span><span class="aster">✳</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <p class="eyebrow fade">About the Jeweler</p>
+      <p class="lead fade">I'm an <em>artistic generalist</em>, melding years of experimenting into a practice that never quite finds a home in just one thing.</p>
+      <div class="about-cols">
+        <div class="fade">
+          <!-- EDIT HERE: your bio paragraphs -->
+          <p>I've been making jewelry since I was five years old, although then it was with beads and shrinky-dinks (no shade to shrinky-dinks — you should play with them if you haven't).</p>
+          <p>I've been metalworking for the past 6 years and continue to explore new beauty and forms in an ever-expanding creative process.</p>
+        </div>
+        <div class="pull fade">"Many pieces are one-of-a-kind, and make me as much as I make them."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED PIECE ============ -->
+  <section class="featured">
+    <div class="wrap featured-inner">
+      <!--
+        EDIT HERE: featured photo. Delete the empty <div class="arch"> below and
+        uncomment the version containing the <img>. A vertical (portrait) photo
+        works best — the frame is a 4:5 arch.
+      -->
+      <div class="arch fade" role="img" aria-label="Featured piece — photo coming soon"></div>
+      <!--
+      <div class="arch fade"><img src="images/featured.jpg" alt="EDIT HERE: describe the featured piece"></div>
+      -->
+      <div class="fade">
+        <p class="eyebrow">One to notice</p>
+        <h2 class="display">The featured piece</h2>
+        <!-- EDIT HERE: the story of the piece -->
+        <p>A spotlight for a single work — the piece that best says what your hands are up to right now. Swap this text for its story: the material, the accident that shaped it, who it was made for.</p>
+        <p class="caption">Placeholder copy — replace with your piece's story</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PORTFOLIO GRID ============ -->
+  <section id="work">
+    <div class="wrap">
+      <div class="work-head">
+        <div>
+          <p class="eyebrow fade">Selected work</p>
+          <h2 class="display fade">Nine pieces,<br>no two alike</h2>
+        </div>
+        <span class="count fade">( 01 — 09 )</span>
+      </div>
+
+      <!--
+        EDIT HERE: the portfolio grid. Each tile follows the same pattern.
+        To use a real photo in a tile:
+          1. Delete the <svg>...</svg> placeholder inside the tile.
+          2. Uncomment the <img> line and set src to your photo
+             (e.g. images/work-1.jpg) and write the alt text.
+        Square-ish photos work best. The tile shapes (arch / pill / circle)
+        are set automatically by styles.css.
+      -->
+      <div class="grid">
+        <figure class="tile fade">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><circle cx="50" cy="50" r="30"/></svg>
+          <!-- <img src="images/work-1.jpg" alt="EDIT HERE: alt text for piece 1"> -->
+          <figcaption class="num">no. 1</figcaption>
+        </figure>
+        <figure class="tile fade">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M30 70 Q50 20 70 70"/></svg>
+          <!-- <img src="images/work-2.jpg" alt="EDIT HERE: alt text for piece 2"> -->
+          <figcaption class="num">no. 2</figcaption>
+        </figure>
+        <figure class="tile fade">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><ellipse cx="50" cy="50" rx="32" ry="18" transform="rotate(-20 50 50)"/></svg>
+          <!-- <img src="images/work-3.jpg" alt="EDIT HERE: alt text for piece 3"> -->
+          <figcaption class="num">no. 3</figcaption>
+        </figure>
+        <figure class="tile fade">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M50 25 v50 M25 50 h50 M32 32 l36 36 M68 32 l-36 36"/></svg>
+          <!-- <img src="images/work-4.jpg" alt="EDIT HERE: alt text for piece 4"> -->
+          <figcaption class="num">no. 4</figcaption>
+        </figure>
+        <figure class="tile fade">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><circle cx="50" cy="42" r="20"/><path d="M50 62 v18"/></svg>
+          <!-- <img src="images/work-5.jpg" alt="EDIT HERE: alt text for piece 5"> -->
+          <figcaption class="num">no. 5</figcaption>
+        </figure>
+        <figure class="tile fade">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M30 65 Q40 30 55 45 T80 40"/></svg>
+          <!-- <img src="images/work-6.jpg" alt="EDIT HERE: alt text for piece 6"> -->
+          <figcaption class="num">no. 6</figcaption>
+        </figure>
+        <figure class="tile fade">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><circle cx="42" cy="50" r="22"/><circle cx="62" cy="50" r="22"/></svg>
+          <!-- <img src="images/work-7.jpg" alt="EDIT HERE: alt text for piece 7"> -->
+          <figcaption class="num">no. 7</figcaption>
+        </figure>
+        <figure class="tile fade">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M50 20 C75 35 75 65 50 80 C25 65 25 35 50 20 Z"/></svg>
+          <!-- <img src="images/work-8.jpg" alt="EDIT HERE: alt text for piece 8"> -->
+          <figcaption class="num">no. 8</figcaption>
+        </figure>
+        <figure class="tile fade">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M25 55 Q50 15 75 55 Q50 75 25 55 Z"/></svg>
+          <!-- <img src="images/work-9.jpg" alt="EDIT HERE: alt text for piece 9"> -->
+          <figcaption class="num">no. 9</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / COMMISSIONS ============ -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <p class="eyebrow fade">Commissions</p>
+      <h2 class="display fade">Curious about <em>my work?</em></h2>
+      <div class="contact-inner">
+        <div class="contact-info fade">
+          <!-- EDIT HERE: commission blurb -->
+          <p>Want to buy or commission a piece? Tell me what you're dreaming of — a stone you inherited, a shape you keep sketching, a ring that doesn't exist yet.</p>
+          <div class="contact-links">
+            <a href="mailto:makingmirajewelry@gmail.com">makingmirajewelry@gmail.com</a>
+            <a href="https://www.instagram.com/makingmira" target="_blank" rel="noopener">@MakingMira</a>
+          </div>
+        </div>
+
+        <!--
+          The form opens the visitor's email app with a pre-filled message
+          (see script.js). This works on GitHub Pages with zero setup.
+          If you'd rather have submissions land in an inbox without opening
+          an email app, sign up at formspree.io (free tier), then replace
+          the <form> tag with:
+            <form id="inquiry-form" action="https://formspree.io/f/YOUR_ID" method="POST">
+          and delete the mailto handler in script.js.
+        -->
+        <form id="inquiry-form" class="fade">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="msg">What are you dreaming of?</label>
+            <textarea id="msg" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit">Send inquiry ✳</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <span>© 2026 Making Mira. All Rights Reserved.</span>
+    <span>Wonky <span class="aster">✳</span> Unique <span class="aster">✳</span> Functional <span class="aster">✳</span> Experimental</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
