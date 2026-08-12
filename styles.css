@@ -219,6 +219,7 @@ nav {
   max-width: 20rem;
   min-width: 2rem;
 }
+
 /* Scrolling tagline strip */
 .ticker {
   border-top: 1px solid var(--line);
