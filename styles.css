@@ -184,27 +184,43 @@ nav {
 .hero .line.shift { padding-left: clamp(1rem, 8vw, 7rem); }
 .hero .mira { font-weight: 560; color: var(--slate-deep); }
 
-/* The pill-shaped image chip inside the headline */
-.hero .chip {
-  display: inline-block;
-  width: clamp(auto /*10rem, 15vw, 20rem*/);
-  height: 1em;
-  border-radius: 999px;
+/* Hero split: text content + featured image, side by side */
+.hero-flex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(2rem, 6vw, 4.5rem);
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.hero-main {
+  flex: 1 1 auto;
+  min-width: 18rem;
+}
+
+.hero-feature {
+  flex: 0 1 auto;
+  max-width: 22rem;
+  min-width: 10rem;
+  border-radius: 999px 999px 24px 24px;;
   overflow: hidden;
-  */ background:
-    radial-gradient(circle at 30% 35%, var(--slate) 0 18%, transparent 19%),
-    radial-gradient(circle at 68% 60%, transparent 0 12%, var(--mist) 13% 20%, transparent 21%),
-    linear-gradient(135deg, var(--tile), var(--mist));
-  /*border: 1px solid var(--line); */
+  border: 1px solid var(--line);
   
 }
 
+.hero-feature img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 @media (max-width: 767px) {
-  .hero .chip {
+  .hero-feature {
     display: none;
   }
 }
-.hero .chip img { width: 100%; height: 100%; object-fit: cover; }
 
 .hero .aster { color: var(--slate); font-family: 'Fraunces', serif; font-weight: 300; }
 .hero-sub {
@@ -214,14 +230,6 @@ nav {
 .hero-sub p { max-width: 26ch; font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.45; color: var(--ink-soft); }
 .hero-sub .scroll-hint { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: var(--slate-deep); }
 
-/* Attempt at main hero image since chip is confuing me */
-
-.hero .herofeature {
-  display:inline-block;
-  margin-left:60%;
-  max-width: 20rem;
-  min-width: 2rem;
-}
 
 /* Scrolling tagline strip */
 .ticker {
